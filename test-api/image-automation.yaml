@@ -2,12 +2,13 @@ apiVersion: image.toolkit.fluxcd.io/v1beta2
 kind: ImageUpdateAutomation
 metadata:
   name: test-api-image-automation
-  namespace: flux-system
+  namespace: test
 spec:
   interval: 1m
   sourceRef:
     kind: GitRepository
     name: test-api
+    namespace: flux-system
   git:
     checkout:
       ref:
@@ -21,6 +22,3 @@ spec:
       branch: main
   update:
     path: ./test-api
-  policies:
-    - name: test-api-image-policy
-      namespace: test

@@ -7,4 +7,5 @@ spec:
   imageRepositoryRef:
     name: test-api-image-repo
   policy:
-    latest: {}
+    alphabetical:
+      order: asc
