@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: test-api
-          image: registry.hextech.online/k8s/test-api:latest
+          image: registry.hextech.online/k8s/test-api:0.0.4
           ports:
             - containerPort: 5000
       imagePullSecrets:
