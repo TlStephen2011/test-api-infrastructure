@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+  namespace: test
+  labels:
+    app: test-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-api
+  template:
+    metadata:
+      labels:
+        app: test-api
+    spec:
+      containers:
+        - name: test-api
+          image: registry.hextech.online/k8s/test-api:latest
+          ports:
+            - containerPort: 5000
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-api-service
+  namespace: test
+spec:
+  type: NodePort
+  selector:
+    app: weatherforecast
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5000
+      nodePort: 35000
