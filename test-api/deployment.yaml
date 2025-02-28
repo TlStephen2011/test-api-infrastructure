@@ -31,7 +31,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app: weatherforecast
+    app: test-api
   ports:
     - protocol: TCP
       port: 80
