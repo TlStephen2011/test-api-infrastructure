@@ -1,0 +1,10 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: test-api-image-policy
+  namespace: test
+spec:
+  imageRepositoryRef:
+    name: test-api-image-repo
+  policy:
+    latest: {}

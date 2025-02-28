@@ -1,0 +1,10 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta1
+kind: ImageRepository
+metadata:
+  name: test-api-image-repo
+  namespace: test
+spec:
+  image: registry.hextech.online/k8s/test-api
+  interval: 1m
+  secretRef:
+    name: regcred

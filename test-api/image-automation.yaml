@@ -1,0 +1,26 @@
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImageUpdateAutomation
+metadata:
+  name: test-api-image-automation
+  namespace: flux-system
+spec:
+  interval: 1m
+  sourceRef:
+    kind: GitRepository
+    name: test-api
+  git:
+    checkout:
+      ref:
+        branch: main
+    commit:
+      author:
+        email: flux-cd-automation@noreply.com
+        name: flux-cd
+      messageTemplate: 'Update image to "{{ .ImagePolicy.Name }}:{{ .ImagePolicy.LatestImage }}"'
+    push:
+      branch: main
+  update:
+    path: ./test-api
+  policies:
+    - name: test-api-image-policy
+      namespace: test
